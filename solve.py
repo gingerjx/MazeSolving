@@ -1,4 +1,4 @@
-from multiprocessing  import Queue
+import queue
 import cv2 as cv
 import numpy as np
 
@@ -42,15 +42,13 @@ def getadjacent(n,s):
 
 def Bfs(image,start, end, radius):
     size = int(radius/2) + (not (int(radius/2)%2))  #finding optimal size of mask
-    
     while size > 0:             #look for path as long as size of mask i greater than 0
-        queue = Queue()
-        queue.put([start])                              #adding start point to queue
+        que = queue.Queue()
+        que.put([start])                              #adding start point to queue
 
         img = image.copy()
-        while not queue.empty():
-
-            path = queue.get() 
+        while not que.empty():
+            path = que.get()
             pixel = path[-1]
 
             if finish(pixel,end,size):
@@ -62,7 +60,9 @@ def Bfs(image,start, end, radius):
                     drawPath(img,x,y,size)
                     new_path = list(path)
                     new_path.append(adjacent)
-                    queue.put(new_path)
+                    que.put(new_path)
+            #cv.imshow("sfs",img)
+            #cv.waitKey(2)
 
         size -= 2          #if path cannot be founded try again with smaller size of mask
 
