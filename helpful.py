@@ -12,6 +12,10 @@ def contoursReduction(contours):
     return contoursReduced;
 
 def drawWithoutPoints(img,cons,start,end):
+    width, height = img.shape[:2]
+    if width < 800 and height < 800:
+        extension = 0
+    else : extension = 10
     for x in cons:
         if np.all(x == start[4]) or np.all(x == end[4]) : continue
         else:  img = cv.drawContours(img,[x],0,0,1)
@@ -23,6 +27,8 @@ def drawWithoutPoints(img,cons,start,end):
     return img
 
 def drawPath(img,path,start,end,s):
+    if s == 1:
+        s = 3
     for position in path:
        drawPoint(img,position,s)
     cv.circle(img,((start[0],start[1])),start[2],(0,0,255),-1)
