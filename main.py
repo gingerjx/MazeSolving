@@ -5,7 +5,11 @@ import helpful
 import solve
 import time
 
-img = cv.imread("mazes\mazeX9.png")
+t0 = time.time()
+img = cv.imread("mazes/maze2.png")
+if  img == None :
+    print("Wrong path to file")
+    exit(1)
 imX, imY = img.shape[0], img.shape[1]
 if ( imX * imY < 500*500 ):
     out = cv.resize(img,(500,500))      #resizing image less than 500x500
@@ -21,7 +25,6 @@ contours = helpful.contoursReduction(contours)                  #Reduce useless 
 conImg = np.ones((out.shape[0], out.shape[1]), dtype=np.uint8)*255              #creating white image
 conImg = helpful.drawWithoutPoints(conImg,contours,start,end)                   #drawing contours on image
 
-t0 = time.time()
 print("Solving....")
 path, size = solve.Bfs(conImg,(start[1],start[0]),(end[1],end[0]),start[2])     #finding path
 print("Finish after: ", time.time()-t0, "seconds")
