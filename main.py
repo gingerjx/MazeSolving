@@ -27,11 +27,11 @@ conImg = helpful.drawWithoutPoints(conImg,contours,start,end)                   
 
 print("Solving....")
 path, size = solve.Bfs(conImg,(start[1],start[0]),(end[1],end[0]),start[2])     #finding path
-print("Finish after: ", time.time()-t0, "seconds")
 
 if path is not None:
     helpful.drawPath(out,path,start,end,size)                                   #drawing path in out image
     cv.imwrite("mazes\solvedMaze.jpg",out)
 else:
     print ("Queue has been exhausted. No answer was found.")
-
+    
+print("Finish after: ", time.time()-t0, "seconds")
