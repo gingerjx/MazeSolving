@@ -28,4 +28,10 @@ Conversion image to binary image (walls, start and end - black | empty space - w
 - Performing result on new image (original image with drawed path)
 
 ## Result
-![img](/maze.png) ![img](/bfs.gif) ![img](/solvedmaze.png)
+
+# Input
+![img](/maze.png) 
+# BFS proccess
+![img](/bfs.gif) 
+# Output
+![img](/solvedmaze.gif) 
