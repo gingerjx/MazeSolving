@@ -34,4 +34,4 @@ Conversion image to binary image (walls, start and end - black | empty space - w
 # BFS proccess
 ![img](/bfs.gif) 
 # Output
-![img](/solvedmaze.gif) 
+![img](/solvedmaze.png) 
